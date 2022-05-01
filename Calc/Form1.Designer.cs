@@ -304,6 +304,7 @@
             this.listBoxHistory.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.listBoxHistory.Size = new System.Drawing.Size(418, 120);
             this.listBoxHistory.TabIndex = 22;
+            this.listBoxHistory.SelectedIndexChanged += new System.EventHandler(this.listBoxHistory_SelectedIndexChanged);
             // 
             // CalcForm
             // 

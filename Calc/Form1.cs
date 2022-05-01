@@ -177,6 +177,9 @@ namespace Calc
             listBoxHistory.Items.Add(text);
         }
 
-
+        private void listBoxHistory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxResult.Text=listBoxHistory.SelectedItem.ToString();
+        }
     }
 }
