@@ -297,6 +297,7 @@
             // listBoxHistory
             // 
             this.listBoxHistory.Font = new System.Drawing.Font("Showcard Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listBoxHistory.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.listBoxHistory.FormattingEnabled = true;
             this.listBoxHistory.ItemHeight = 29;
             this.listBoxHistory.Location = new System.Drawing.Point(19, 30);
