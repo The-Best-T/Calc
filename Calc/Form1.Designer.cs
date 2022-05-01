@@ -36,6 +36,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.buttonPlus = new System.Windows.Forms.Button();
             this.buttonMinus = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.buttonChangeSign = new System.Windows.Forms.Button();
             this.buttonResult = new System.Windows.Forms.Button();
             this.buttonPoint = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.buttonRound = new System.Windows.Forms.Button();
             this.textBoxResult = new System.Windows.Forms.TextBox();
             this.listBoxHistory = new System.Windows.Forms.ListBox();
@@ -74,6 +74,7 @@
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+
             // 
             // button2
             // 
@@ -86,6 +87,7 @@
             this.button2.Text = "2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+
             // 
             // button3
             // 
@@ -98,6 +100,7 @@
             this.button3.Text = "3";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+
             // 
             // button4
             // 
@@ -110,6 +113,7 @@
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+
             // 
             // button5
             // 
@@ -122,6 +126,7 @@
             this.button5.Text = "5";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+
             // 
             // button6
             // 
@@ -134,6 +139,7 @@
             this.button6.Text = "6";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+
             // 
             // button7
             // 
@@ -146,6 +152,7 @@
             this.button7.Text = "7";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+
             // 
             // button9
             // 
@@ -158,6 +165,7 @@
             this.button9.Text = "9";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
+
             // 
             // buttonPlus
             // 
@@ -169,6 +177,7 @@
             this.buttonPlus.Text = "+";
             this.buttonPlus.UseVisualStyleBackColor = true;
             this.buttonPlus.Click += new System.EventHandler(this.buttonPlus_Click);
+
             // 
             // buttonMinus
             // 
@@ -246,6 +255,7 @@
             this.buttonResult.Text = "=";
             this.buttonResult.UseVisualStyleBackColor = true;
             this.buttonResult.Click += new System.EventHandler(this.buttonResult_Click);
+            this.buttonResult.Click += new System.EventHandler(this.ActionSound);
             // 
             // buttonPoint
             // 
@@ -280,6 +290,7 @@
             this.buttonRound.Text = "Rnd";
             this.buttonRound.UseVisualStyleBackColor = true;
             this.buttonRound.Click += new System.EventHandler(this.buttonRound_Click);
+            this.buttonRound.Click += new System.EventHandler(this.ActionSound);
             // 
             // textBoxResult
             // 

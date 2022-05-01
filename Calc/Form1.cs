@@ -1,4 +1,5 @@
 using Contracts;
+using System.Media;
 
 namespace Calc
 {
@@ -16,6 +17,13 @@ namespace Calc
         private void CalcForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ActionSound(object sender,EventArgs e)
+        {
+            int number=new Random().Next(6);
+            SoundPlayer sound=new SoundPlayer(Directory.GetCurrentDirectory()+@$"\sounds\sound{number}.wav");
+            sound.Play();
         }
         private void button0_Click(object sender, EventArgs e)
         {
