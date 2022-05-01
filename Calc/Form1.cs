@@ -60,27 +60,69 @@ namespace Calc
         {
             textBoxResult.Text += '9';
         }
+
+        private string AddSign(string text, char sign)
+        {
+            char last = text.Last();
+            if (last == '.')
+            {
+                text += '0';
+
+            }
+            else if ("+-*/".Contains(last))
+            {
+                text=text.Remove(text.Length - 1);
+            }
+            text += sign;
+            return text;
+        }
+
         private void buttonMinus_Click(object sender, EventArgs e)
         {
-            //Proverka
-            textBoxResult.Text += '-';
+            string text = textBoxResult.Text;
+            if (string.IsNullOrEmpty(text))
+            {
+                textBoxResult.Text = "0-";
+                return;
+            }
+            string newText = AddSign(text, '-');
+            textBoxResult.Text = newText;
         }
 
         private void buttonMultiply_Click(object sender, EventArgs e)
         {
-            //Proverka
-            textBoxResult.Text += '*';
+            string text = textBoxResult.Text;
+            if (string.IsNullOrEmpty(text))
+            {
+                textBoxResult.Text = "0*";
+                return;
+            }
+            string newText = AddSign(text, '*');
+            textBoxResult.Text = newText;
         }
         private void buttonDiv_Click(object sender, EventArgs e)
         {
             //Proverka
-            textBoxResult.Text += '/';
+            string text = textBoxResult.Text;
+            if (string.IsNullOrEmpty(text))
+            {
+                textBoxResult.Text = "0/";
+                return;
+            }
+            string newText = AddSign(text, '/');
+            textBoxResult.Text = newText;
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
-            //Proverka
-            textBoxResult.Text += '+';
+            string text = textBoxResult.Text;
+            if (string.IsNullOrEmpty(text))
+            {
+                textBoxResult.Text = "0+";
+                return;
+            }
+            string newText = AddSign(text, '+');
+            textBoxResult.Text = newText;
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -104,17 +146,16 @@ namespace Calc
 
         private void buttonChangeSign_Click(object sender, EventArgs e)
         {
-            //Proverka
-            string text =textBoxResult.Text;
+            string text = textBoxResult.Text;
             if (string.IsNullOrEmpty(text))
                 return;
 
-            string newText=ChangeSign(text);
+            string newText = ChangeSign(text);
             textBoxResult.Text = newText;
         }
         private string ChangeSign(string text)
         {
-            if (text[0] != '-') 
+            if (text[0] != '-')
                 text = '-' + text;
             else
                 text = text.Substring(1);
@@ -136,9 +177,6 @@ namespace Calc
             listBoxHistory.Items.Add(text);
         }
 
-        private void textBoxResult_TextChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

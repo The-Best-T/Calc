@@ -292,7 +292,6 @@
             this.textBoxResult.Size = new System.Drawing.Size(418, 45);
             this.textBoxResult.TabIndex = 21;
             this.textBoxResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxResult.TextChanged += new System.EventHandler(this.textBoxResult_TextChanged);
             // 
             // listBoxHistory
             // 
