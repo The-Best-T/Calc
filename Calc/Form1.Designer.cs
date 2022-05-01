@@ -307,8 +307,10 @@
             // 
             // CalcForm
             // 
+            this.AcceptButton = this.buttonResult;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonClear;
             this.ClientSize = new System.Drawing.Size(462, 513);
             this.Controls.Add(this.listBoxHistory);
             this.Controls.Add(this.textBoxResult);
@@ -332,6 +334,7 @@
             this.Controls.Add(this.buttonChangeSign);
             this.Controls.Add(this.buttonDiv);
             this.Controls.Add(this.button0);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CalcForm";
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.CalcForm_Load);
