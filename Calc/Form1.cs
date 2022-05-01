@@ -105,7 +105,20 @@ namespace Calc
         private void buttonChangeSign_Click(object sender, EventArgs e)
         {
             //Proverka
-            textBoxResult.Text = '-'+textBoxResult.Text;
+            string text =textBoxResult.Text;
+            if (string.IsNullOrEmpty(text))
+                return;
+
+            string newText=ChangeSign(text);
+            textBoxResult.Text = newText;
+        }
+        private string ChangeSign(string text)
+        {
+            if (text[0] != '-') 
+                text = '-' + text;
+            else
+                text = text.Substring(1);
+            return text;
         }
 
         private void buttonPoint_Click(object sender, EventArgs e)
