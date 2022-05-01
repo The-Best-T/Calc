@@ -19,11 +19,18 @@ namespace Calc
 
         }
 
-        private void ActionSound(object sender,EventArgs e)
+        private async void ActionSound(object sender,EventArgs e)
         {
-            int number=new Random().Next(6);
-            SoundPlayer sound=new SoundPlayer(Directory.GetCurrentDirectory()+@$"\sounds\sound{number}.wav");
-            sound.Play();
+            string sound = await Task.Run(() =>GetSound());       
+            SoundPlayer player=new SoundPlayer(sound);
+            player.Play();
+        }
+
+        private string GetSound()
+        {
+            string[] sounds = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\sounds\");
+            int number = new Random().Next(sounds.Length);
+            return sounds[number];
         }
         private void button0_Click(object sender, EventArgs e)
         {
