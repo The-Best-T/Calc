@@ -47,7 +47,7 @@
             this.buttonResult = new System.Windows.Forms.Button();
             this.buttonPoint = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.buttonPI = new System.Windows.Forms.Button();
+            this.buttonRound = new System.Windows.Forms.Button();
             this.textBoxResult = new System.Windows.Forms.TextBox();
             this.listBoxHistory = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
@@ -270,16 +270,16 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // buttonPI
+            // buttonRound
             // 
-            this.buttonPI.Font = new System.Drawing.Font("Showcard Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonPI.Location = new System.Drawing.Point(231, 207);
-            this.buttonPI.Name = "buttonPI";
-            this.buttonPI.Size = new System.Drawing.Size(100, 50);
-            this.buttonPI.TabIndex = 20;
-            this.buttonPI.Text = "PI";
-            this.buttonPI.UseVisualStyleBackColor = true;
-            this.buttonPI.Click += new System.EventHandler(this.buttonPI_Click);
+            this.buttonRound.Font = new System.Drawing.Font("Showcard Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonRound.Location = new System.Drawing.Point(231, 207);
+            this.buttonRound.Name = "buttonRound";
+            this.buttonRound.Size = new System.Drawing.Size(100, 50);
+            this.buttonRound.TabIndex = 20;
+            this.buttonRound.Text = "Rnd";
+            this.buttonRound.UseVisualStyleBackColor = true;
+            this.buttonRound.Click += new System.EventHandler(this.buttonRound_Click);
             // 
             // textBoxResult
             // 
@@ -295,6 +295,7 @@
             // 
             // listBoxHistory
             // 
+            this.listBoxHistory.DisplayMember = "wdwdw";
             this.listBoxHistory.Font = new System.Drawing.Font("Showcard Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBoxHistory.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.listBoxHistory.FormattingEnabled = true;
@@ -304,6 +305,7 @@
             this.listBoxHistory.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.listBoxHistory.Size = new System.Drawing.Size(418, 120);
             this.listBoxHistory.TabIndex = 22;
+            this.listBoxHistory.Tag = "";
             this.listBoxHistory.SelectedIndexChanged += new System.EventHandler(this.listBoxHistory_SelectedIndexChanged);
             // 
             // CalcForm
@@ -315,7 +317,7 @@
             this.ClientSize = new System.Drawing.Size(462, 513);
             this.Controls.Add(this.listBoxHistory);
             this.Controls.Add(this.textBoxResult);
-            this.Controls.Add(this.buttonPI);
+            this.Controls.Add(this.buttonRound);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.button2);
@@ -365,7 +367,7 @@
         private Button buttonResult;
         private Button buttonPoint;
         private Button button8;
-        private Button buttonPI;
+        private Button buttonRound;
         private TextBox textBoxResult;
         private ListBox listBoxHistory;
     }

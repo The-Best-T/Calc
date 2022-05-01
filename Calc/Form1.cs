@@ -1,10 +1,16 @@
+using Contracts;
+
 namespace Calc
 {
     public partial class CalcForm : Form
     {
+        private bool _point = false;
+        private ICalculator _calculator;
+
         public CalcForm()
         {
             InitializeComponent();
+            _calculator = new Calculator();
         }
 
         private void CalcForm_Load(object sender, EventArgs e)
@@ -71,9 +77,10 @@ namespace Calc
             }
             else if ("+-*/".Contains(last))
             {
-                text=text.Remove(text.Length - 1);
+                text = text.Remove(text.Length - 1);
             }
             text += sign;
+            _point = false;
             return text;
         }
 
@@ -102,7 +109,6 @@ namespace Calc
         }
         private void buttonDiv_Click(object sender, EventArgs e)
         {
-            //Proverka
             string text = textBoxResult.Text;
             if (string.IsNullOrEmpty(text))
             {
@@ -138,10 +144,23 @@ namespace Calc
             textBoxResult.Clear();
         }
 
-        private void buttonPI_Click(object sender, EventArgs e)
+        private async void buttonRound_Click(object sender, EventArgs e)
         {
-            //Proverka
-            textBoxResult.Text += "PI";
+            string text=textBoxResult.Text;
+            if (String.IsNullOrEmpty(text))
+                return;
+            try
+            {
+                int result = await Task.Run(() => _calculator.Round(text));
+                listBoxHistory.Items.Add(text + '=');
+                listBoxHistory.Items.Add(result);
+
+                textBoxResult.Text=result.ToString();
+            }
+            catch (Exception ex)
+            {
+                textBoxResult.Text=ex.Message;
+            }
         }
 
         private void buttonChangeSign_Click(object sender, EventArgs e)
@@ -164,22 +183,51 @@ namespace Calc
 
         private void buttonPoint_Click(object sender, EventArgs e)
         {
-            //Proverka
-            textBoxResult.Text += '.';
-        }
+            if (_point)
+                return;
 
-        private void buttonResult_Click(object sender, EventArgs e)
-        {
             string text = textBoxResult.Text;
             if (string.IsNullOrEmpty(text))
+            {
+                text += '0';
+            }
+            else if ("+-*/".Contains(text.Last()))
+            {
+                text += '0';
+            }
+
+            text += '.';
+            _point = true;
+
+            textBoxResult.Text = text;
+        }
+
+        private async void buttonResult_Click(object sender, EventArgs e)
+        {
+            string text = textBoxResult.Text;
+            if (String.IsNullOrEmpty(text))
                 return;
-            textBoxResult.Clear();
-            listBoxHistory.Items.Add(text);
+            try
+            {
+                double result = await Task.Run(() => _calculator.Calculate(text));
+                listBoxHistory.Items.Add('='+text);
+                listBoxHistory.Items.Add(result);
+
+                textBoxResult.Text = result.ToString();
+            }
+            catch (Exception ex)
+            {
+                textBoxResult.Text = ex.Message;
+            }
         }
 
         private void listBoxHistory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBoxResult.Text=listBoxHistory.SelectedItem.ToString();
+            string? text = listBoxHistory.SelectedItem.ToString();
+            if (string.IsNullOrEmpty(text))
+                return;
+            text = text.TrimStart('=');
+            textBoxResult.Text = text;
         }
     }
 }
