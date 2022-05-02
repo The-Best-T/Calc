@@ -154,6 +154,7 @@ namespace Calc
         private void buttonAllClear_Click(object sender, EventArgs e)
         {
             textBoxResult.Clear();
+            
         }
 
         private async void buttonRound_Click(object sender, EventArgs e)
@@ -165,9 +166,12 @@ namespace Calc
             try
             {
                 int result = await Task.Run(() => _calculator.Round(text));
+
+                if (text.Last() == '.') text += '0';
                 listBoxHistory.Items.Add(text + '=');
                 listBoxHistory.Items.Add(result);
 
+                _point = false;
                 textBoxResult.Text = result.ToString();
             }
             catch (Exception ex)
@@ -224,9 +228,12 @@ namespace Calc
             try
             {
                 double result = await Task.Run(() => _calculator.Calculate(text));
-                listBoxHistory.Items.Add('=' + text);
+
+                if (text.Last() == '.') text += '0';
+                listBoxHistory.Items.Add(text+'=');
                 listBoxHistory.Items.Add(result);
 
+                _point = false;
                 textBoxResult.Text = result.ToString();
             }
             catch (Exception ex)
@@ -240,9 +247,13 @@ namespace Calc
             string? text = listBoxHistory.SelectedItem.ToString();
             if (string.IsNullOrEmpty(text))
                 return;
-            text = text.TrimStart('=');
+            text = text.TrimEnd('=');
             textBoxResult.Text = text;
         }
 
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
