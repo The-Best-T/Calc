@@ -6,13 +6,13 @@ namespace Calc
     public partial class CalcForm : Form
     {
         private bool _point = false;
-        private ICalculator _calculator;
-        private string[] _sounds;
+        private readonly ICalculator _calculator;
+        private readonly string[] _sounds;
         public CalcForm()
         {
             InitializeComponent();
             _calculator = new Calculator();
-            _sounds= Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\sounds\");
+            _sounds = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\sounds\");
         }
 
         private void CalcForm_Load(object sender, EventArgs e)
@@ -20,12 +20,12 @@ namespace Calc
 
         }
 
-        private void ActionSound(object sender,EventArgs e)
+        private void ActionSound(object sender, EventArgs e)
         {
             if (checkBoxMute.Checked)
                 return;
-            int number = new Random().Next(_sounds.Length);      
-            SoundPlayer player=new SoundPlayer(_sounds[number]);
+            int number = new Random().Next(_sounds.Length);
+            SoundPlayer player = new SoundPlayer(_sounds[number]);
             player.Play();
         }
 
@@ -158,7 +158,7 @@ namespace Calc
 
         private async void buttonRound_Click(object sender, EventArgs e)
         {
-            string text=textBoxResult.Text;
+            string text = textBoxResult.Text;
             if (String.IsNullOrEmpty(text))
                 return;
             try
@@ -167,11 +167,11 @@ namespace Calc
                 listBoxHistory.Items.Add(text + '=');
                 listBoxHistory.Items.Add(result);
 
-                textBoxResult.Text=result.ToString();
+                textBoxResult.Text = result.ToString();
             }
             catch (Exception ex)
             {
-                textBoxResult.Text=ex.Message;
+                textBoxResult.Text = ex.Message;
             }
         }
 
@@ -222,7 +222,7 @@ namespace Calc
             try
             {
                 double result = await Task.Run(() => _calculator.Calculate(text));
-                listBoxHistory.Items.Add('='+text);
+                listBoxHistory.Items.Add('=' + text);
                 listBoxHistory.Items.Add(result);
 
                 textBoxResult.Text = result.ToString();

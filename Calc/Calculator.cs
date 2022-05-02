@@ -8,7 +8,7 @@ namespace Calc
     {
         private readonly List<double> _numbers;
         private readonly List<char> _signs;
-        private ICalculateMethod _method;
+        private readonly ICalculateMethod _method;
 
         public Calculator()
         {
@@ -51,7 +51,7 @@ namespace Calc
         private double Calculate()
         {
             //Method
-            return _method.Calculate(_numbers,_signs);
+            return _method.Calculate(_numbers, _signs);
         }
 
         public int Round(string text)
