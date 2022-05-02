@@ -331,7 +331,7 @@
             this.buttonPoint.Size = new System.Drawing.Size(100, 50);
             this.buttonPoint.TabIndex = 19;
             this.buttonPoint.TabStop = false;
-            this.buttonPoint.Text = ".";
+            this.buttonPoint.Text = ",";
             this.buttonPoint.UseVisualStyleBackColor = true;
             this.buttonPoint.Click += new System.EventHandler(this.buttonPoint_Click);
             // 

@@ -46,6 +46,8 @@ namespace Calc
                 else
                     builder.Append(c);
             }
+            Double.TryParse(builder.ToString(), out double lastValue);
+            _numbers.Add(lastValue);
         }
 
         private double Calculate()

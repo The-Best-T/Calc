@@ -165,9 +165,11 @@ namespace Calc
                 return;
             try
             {
+                if ("+-*/,".Contains(text.Last())) text += '0';
+                if (text[0] == '-') text = '0' + text;
+
                 int result = await Task.Run(() => _calculator.Round(text));
 
-                if (text.Last() == '.') text += '0';
                 listBoxHistory.Items.Add(text + '=');
                 listBoxHistory.Items.Add(result);
 
@@ -176,7 +178,7 @@ namespace Calc
             }
             catch (Exception ex)
             {
-                textBoxResult.Text = ex.Message;
+                textBoxResult.Text = "Error";
             }
         }
 
@@ -213,7 +215,7 @@ namespace Calc
                 text += '0';
             }
 
-            text += '.';
+            text += ',';
             _point = true;
 
             textBoxResult.Text = text;
@@ -227,9 +229,10 @@ namespace Calc
                 return;
             try
             {
+                if ("+-*/,".Contains(text.Last())) text += '0';
+                if (text[0] == '-') text = '0' + text;
                 double result = await Task.Run(() => _calculator.Calculate(text));
 
-                if (text.Last() == '.') text += '0';
                 listBoxHistory.Items.Add(text+'=');
                 listBoxHistory.Items.Add(result);
 
@@ -238,7 +241,7 @@ namespace Calc
             }
             catch (Exception ex)
             {
-                textBoxResult.Text = ex.Message;
+                textBoxResult.Text = "Error";
             }
         }
 
