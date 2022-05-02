@@ -20,7 +20,7 @@ namespace Calc
 
         }
 
-        private void ActionSound(object sender, EventArgs e)
+        private void ActionSound()
         {
             if (checkBoxMute.Checked)
                 return;
@@ -158,6 +158,7 @@ namespace Calc
 
         private async void buttonRound_Click(object sender, EventArgs e)
         {
+            ActionSound();
             string text = textBoxResult.Text;
             if (String.IsNullOrEmpty(text))
                 return;
@@ -216,6 +217,7 @@ namespace Calc
 
         private async void buttonResult_Click(object sender, EventArgs e)
         {
+            ActionSound();
             string text = textBoxResult.Text;
             if (String.IsNullOrEmpty(text))
                 return;

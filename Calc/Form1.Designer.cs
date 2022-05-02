@@ -300,7 +300,6 @@
             this.buttonResult.Text = "=";
             this.buttonResult.UseVisualStyleBackColor = true;
             this.buttonResult.Click += new System.EventHandler(this.buttonResult_Click);
-            this.buttonResult.Click += new System.EventHandler(this.ActionSound);
             // 
             // buttonPoint
             // 
@@ -329,7 +328,6 @@
             this.buttonRound.Text = "Rnd";
             this.buttonRound.UseVisualStyleBackColor = true;
             this.buttonRound.Click += new System.EventHandler(this.buttonRound_Click);
-            this.buttonRound.Click += new System.EventHandler(this.ActionSound);
             // 
             // textBoxResult
             // 
@@ -367,6 +365,8 @@
             // checkBoxMute
             // 
             this.checkBoxMute.AutoSize = true;
+            this.checkBoxMute.Checked = true;
+            this.checkBoxMute.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxMute.Font = new System.Drawing.Font("Showcard Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxMute.Location = new System.Drawing.Point(19, 2);
             this.checkBoxMute.Name = "checkBoxMute";
@@ -406,6 +406,7 @@
             this.Controls.Add(this.buttonDiv);
             this.Controls.Add(this.button0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "CalcForm";
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.CalcForm_Load);
