@@ -7,11 +7,12 @@ namespace Calc
     {
         private bool _point = false;
         private ICalculator _calculator;
-
+        private string[] _sounds;
         public CalcForm()
         {
             InitializeComponent();
             _calculator = new Calculator();
+            _sounds= Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\sounds\");
         }
 
         private void CalcForm_Load(object sender, EventArgs e)
@@ -19,19 +20,15 @@ namespace Calc
 
         }
 
-        private async void ActionSound(object sender,EventArgs e)
+        private void ActionSound(object sender,EventArgs e)
         {
-            string sound = await Task.Run(() =>GetSound());       
-            SoundPlayer player=new SoundPlayer(sound);
+            if (checkBoxMute.Checked)
+                return;
+            int number = new Random().Next(_sounds.Length);      
+            SoundPlayer player=new SoundPlayer(_sounds[number]);
             player.Play();
         }
 
-        private string GetSound()
-        {
-            string[] sounds = Directory.GetFiles(Directory.GetCurrentDirectory() + @$"\sounds\");
-            int number = new Random().Next(sounds.Length);
-            return sounds[number];
-        }
         private void button0_Click(object sender, EventArgs e)
         {
             textBoxResult.Text += '0';
@@ -244,5 +241,6 @@ namespace Calc
             text = text.TrimStart('=');
             textBoxResult.Text = text;
         }
+
     }
 }
