@@ -220,9 +220,10 @@ namespace Calc
 
         private void ResultActions(string text,double result)
         {
-            string resultString = result.ToString("C9", CultureInfo.CreateSpecificCulture("ru-RU"));
-            resultString = resultString.Remove(resultString.Length - 2);
-
+            string resultString = result.ToString("F9", CultureInfo.CreateSpecificCulture("ru-RU"));
+            resultString = resultString.TrimEnd('0');
+            if (resultString.Last()==',') 
+                resultString=resultString.Remove(resultString.Length-1);
             listBoxHistory.Items.Add(text + '=');
             listBoxHistory.Items.Add(resultString);
 
@@ -254,6 +255,8 @@ namespace Calc
             if (string.IsNullOrEmpty(text))
                 return;
             text = text.TrimEnd('=');
+            foreach(var symb in text)
+                if (symb==',') _point = true;
             textBoxResult.Text = text;
         }
 
