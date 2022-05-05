@@ -220,8 +220,8 @@ namespace Calc
 
         private void ResultActions(string text,double result)
         {
-            string resultString = result.ToString("C", CultureInfo.CreateSpecificCulture("ru-RU"));
-            resultString = resultString.Remove(resultString.Length - 1);
+            string resultString = result.ToString("C9", CultureInfo.CreateSpecificCulture("ru-RU"));
+            resultString = resultString.Remove(resultString.Length - 2);
 
             listBoxHistory.Items.Add(text + '=');
             listBoxHistory.Items.Add(resultString);
