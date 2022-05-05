@@ -28,7 +28,6 @@ namespace Calc
             return result;
         }
 
-        //If number as "X,XXXXXE+XX" it will not work
         private void SplitText(string text)
         {
             StringBuilder builder = new StringBuilder();

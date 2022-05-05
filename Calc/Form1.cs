@@ -1,4 +1,5 @@
 using Contracts;
+using System.Globalization;
 using System.Media;
 
 namespace Calc
@@ -148,13 +149,14 @@ namespace Calc
             string text = textBoxResult.Text;
             if (string.IsNullOrEmpty(text))
                 return;
+            if (text.Last() == ',') _point = false;
             textBoxResult.Text = text.Remove(text.Length - 1);
         }
 
         private void buttonAllClear_Click(object sender, EventArgs e)
         {
             textBoxResult.Clear();
-            
+            _point = false;
         }
 
         private async void buttonRound_Click(object sender, EventArgs e)
@@ -169,12 +171,7 @@ namespace Calc
                 if (text[0] == '-') text = '0' + text;
 
                 int result = await Task.Run(() => _calculator.Round(text));
-
-                listBoxHistory.Items.Add(text + '=');
-                listBoxHistory.Items.Add(result);
-
-                _point = false;
-                textBoxResult.Text = result.ToString();
+                ResultActions(text, result);
             }
             catch (Exception ex)
             {
@@ -221,6 +218,17 @@ namespace Calc
             textBoxResult.Text = text;
         }
 
+        private void ResultActions(string text,double result)
+        {
+            string resultString = result.ToString("C", CultureInfo.CreateSpecificCulture("ru-RU"));
+            resultString = resultString.Remove(resultString.Length - 1);
+
+            listBoxHistory.Items.Add(text + '=');
+            listBoxHistory.Items.Add(resultString);
+
+            _point = false;
+            textBoxResult.Text = resultString;
+        }
         private async void buttonResult_Click(object sender, EventArgs e)
         {
             ActionSound();
@@ -232,12 +240,7 @@ namespace Calc
                 if ("+-*/,".Contains(text.Last())) text += '0';
                 if (text[0] == '-') text = '0' + text;
                 double result = await Task.Run(() => _calculator.Calculate(text));
-
-                listBoxHistory.Items.Add(text+'=');
-                listBoxHistory.Items.Add(result);
-
-                _point = false;
-                textBoxResult.Text = result.ToString();
+                ResultActions(text, result);
             }
             catch (Exception ex)
             {
